@@ -28,7 +28,13 @@ const characters = [
   { id: 04, name: 'Mufasa' }
 ]
 
-const charactersCopy = characters.map(item => item).sort((id1, id2) => id1.id - id2.id)
+// minha solução
+// const charactersCopy = characters.map(item => item).sort((item1, item2) => item1.id - item2.id)
+// console.log(characters, charactersCopy)
+
+// Solução do roger
+const charactersCopy = characters.map(item => ({ id: item.id, name: item.name }))
+charactersCopy.sort((item2, item1) => item2.id - item1.id)
 console.log(characters, charactersCopy)
 
 
@@ -57,14 +63,9 @@ console.log(numbers, numbersCopy)
 */
 
 const randomNumbers = [10, 5, 0, 40, 60, 10, 20, 70]
+const newNumber = randomNumbers.find(number => number > 50)
+console.log(newNumber)
 
-const orderedNumbers = randomNumbers.sort((num1, num2) => num1 - num2)
-const newA = orderedNumbers.filter(num => {
-  if (num > 50) {
-    return num
-  }
-})
-console.log(orderedNumbers, newA)
 
 
 
@@ -79,7 +80,7 @@ console.log(orderedNumbers, newA)
 const people = ['Cauã', 'Alfredo', 'Bruno']
 
 const peopleCopy = people.map(name => name).sort().reverse()
-console.log(people, peopleCopy)
+console.log({ people, peopleCopy })
 
 
 
@@ -123,14 +124,23 @@ const topBrazilmovies = [
   { title: 'Dona Flor e Seus Dois Maridos', peopleAmount: 10735524, distributedBy: 'Embrafilme' }
 ]
 
-const disneyMovies = topBrazilmovies.filter(movie => movie.distributedBy === "Disney")
-const disneyTotalViewers = disneyMovies.reduce((acc, viewers) => acc + viewers.peopleAmount, 0)
-console.log(disneyMovies, disneyTotalViewers)
+const disneyTotalViewers = topBrazilmovies
+  .filter(movie => movie.distributedBy === "Disney")
+  .reduce((acc, viewers) => acc + viewers.peopleAmount, 0)
+console.log(disneyTotalViewers)
 
 const ul = document.querySelector(".list-group")
-topBrazilmovies.map(movie => {
-  ul.innerHTML += `<li>${movie.title}</li>`
-})
+// topBrazilmovies.map(movie => ul.innerHTML += `<li>${movie.title}</li>`)
+
+// Solução do roger
+// const ul = document.querySelector(".list-group")
+// const movieNames = topBrazilmovies.map(movie => `<li>${movie.title}</li>`).join("")
+// ul.innerHTML = movieNames
+
+// Solução 2 do roger
+// const ul = document.querySelector(".list-group")
+// const movieNames = topBrazilmovies.reduce((acc, movie) => acc + `<li>${movie.title}</li>`, "")
+// ul.innerHTML = movieNames
 
 
 
@@ -155,29 +165,19 @@ const pets = [
   { name: 'Chico', age: 6, gender: 'Male', type: 'Dog' }
 ]
 
-const dogs = pets.filter(pets => pets.type === "Dog")
+const dogs = pets
+  .filter(pet => pet.type === "Dog")
+  .map(dog => ({ 
+    name: dog.name,
+    age: dog.age * 7,
+    gender: dog.gender,
+    type: dog.type
+  }))
 console.log(dogs)
 
-const dogsHumanAge = dogs.map(dog => {
-  dog.age * 7
-  return dog
-})
-console.log(dogsHumanAge)
 
 
 
-/* ---------------------------------------------------------------------------------------------- */
-
-/*
-  10
-  
-  - Na sua versão do Quiz, teste se ao enviar o form pela 2ª vez consecutiva, a 
-    pontuação do envio anterior é contabilizada;
-  - Exemplo: exibe 100% no 1º envio e 200% no 2º envio (sem modificar as 
-    alternativas entre os envios);
-    - Se isso está acontecendo, proponha uma solução para que o 2º submit não 
-      considere a pontuação do envio anterior.
-*/
 
 
 
@@ -198,53 +198,53 @@ console.log(dogsHumanAge)
 
 
 
-const scores = [10, 50, 20, 5, 35, 70, 45]
-scores.sort((score1, score2) => score1 - score2)
-console.log(scores)
+// const scores = [10, 50, 20, 5, 35, 70, 45]
+// scores.sort((score1, score2) => score1 - score2)
+// console.log(scores)
 
 
-const theBigFamily = [
-  { name: 'Lineu', score: 20 },
-  { name: 'Nenê', score: 10 },
-  { name: 'Tuco', score: 50 },
-  { name: 'Bebel', score: 30 },
-  { name: 'Agostinho', score: 70 }
-]
+// const theBigFamily = [
+//   { name: 'Lineu', score: 20 },
+//   { name: 'Nenê', score: 10 },
+//   { name: 'Tuco', score: 50 },
+//   { name: 'Bebel', score: 30 },
+//   { name: 'Agostinho', score: 70 }
+// ]
 
-theBigFamily.sort((item1, item2) => {
-  if (item1.score > item2.score) {
-    return -1
-  } else if (item2.score > item1.score) {
-    return 1
-  }
-  return 0
-})
+// theBigFamily.sort((item1, item2) => {
+//   if (item1.score > item2.score) {
+//     return -1
+//   } else if (item2.score > item1.score) {
+//     return 1
+//   }
+//   return 0
+// })
 
-console.log(theBigFamily)
-
-
-// se o primeiro item for maior que o segundo ele fica em cima e recebe 1
-// se o primeiro item for menor que o segundo ele fica em baixo e recebe -1
-// se ambos forem iguais, nao re-ordena e recebe 0
+// console.log(theBigFamily)
 
 
-theBigFamily.sort((item1, item2) => item2.score - item1.score)
-//possiveis resultados item2 - item1 = positivo(recebe 1); negativo(recebe -1); igual (recebe 0)
+// // se o primeiro item for maior que o segundo ele fica em cima e recebe 1
+// // se o primeiro item for menor que o segundo ele fica em baixo e recebe -1
+// // se ambos forem iguais, nao re-ordena e recebe 0
 
 
+// theBigFamily.sort((item1, item2) => item2.score - item1.score)
+// //possiveis resultados item2 - item1 = positivo(recebe 1); negativo(recebe -1); igual (recebe 0)
 
 
 
-const books = [
-  { name: 'Código Limpo', price: 30 },
-  { name: 'O milagre da manhã', price: 5 },
-  { name: 'Alice no País das Maravilhas', price: 10 },
-  { name: 'Quem Pensa Enriquece', price: 50 },
-  { name: 'O livro da ciência', price: 40 }
-]
 
-const booksOnSale = books
-  .filter(({ price }) => price > 20)
-  .map(({ name, price }) =>
-    `O preço do livro "${name}" caiu para ${price} reais.`)
-console.log(booksOnSale);
+
+// const books = [
+//   { name: 'Código Limpo', price: 30 },
+//   { name: 'O milagre da manhã', price: 5 },
+//   { name: 'Alice no País das Maravilhas', price: 10 },
+//   { name: 'Quem Pensa Enriquece', price: 50 },
+//   { name: 'O livro da ciência', price: 40 }
+// ]
+
+// const booksOnSale = books
+//   .filter(({ price }) => price > 20)
+//   .map(({ name, price }) =>
+//     `O preço do livro "${name}" caiu para ${price} reais.`)
+// console.log(booksOnSale);
