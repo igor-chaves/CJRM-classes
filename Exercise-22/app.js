@@ -4,14 +4,18 @@
   - Exiba o array ordenado no console.
 */
 
-//Letras maiúsculas vem antes das minúsculas
+// Letras maiúsculas vem antes das minúsculas
+// const names = ['Caio', 'André', 'Dário']
+
+// const namesCopy = names.map(name => name).sort()
+// console.log(names, namesCopy)
+
+// refatoração
+const getArrayCopy = array => array.map(item => item) //função para gerar novo array automatizando o MAP(), quando for usar várias vezes
 const names = ['Caio', 'André', 'Dário']
 
-const namesCopy = names.map(name => name).sort()
+const namesCopy = getArrayCopy(names).sort()
 console.log(names, namesCopy)
-
-
-
 
 
 /* ---------------------------------------------------------------------------------------------- */
@@ -33,8 +37,9 @@ const characters = [
 // console.log(characters, charactersCopy)
 
 // Solução do roger
-const charactersCopy = characters.map(item => ({ id: item.id, name: item.name }))
-charactersCopy.sort((item2, item1) => item2.id - item1.id)
+const charactersCopy = characters
+  .map(item => ({ id: item.id, name: item.name }))
+  .sort((item2, item1) => item2.id - item1.id)
 console.log(characters, charactersCopy)
 
 
@@ -95,9 +100,20 @@ console.log({ people, peopleCopy })
 
 const ingredients = ['vinho', 'tomate', 'cebola', 'cogumelo']
 
-const ingredientsCopy = ingredients.map(item => `${item} cozido`)
-const message = ingredientsCopy.join(", ")
-console.log(message)
+// minha solução
+// const ingredientsCopy = ingredients.map(item => `${item} cozido`)
+// const message = ingredientsCopy.join(", ")
+// console.log(message)
+
+// Solução do roger
+const cookedIngredients = ingredients.reduce((acc, item, index, array) => {
+  const correctWordGender = /a$/.test(item) ? "cozida" : "cozido"
+  const isLastItem = index === array.length - 1
+  const ingredientsMsg = acc + `${item} ${correctWordGender}`
+
+  return isLastItem ? ingredientsMsg : `${ingredientsMsg}, `
+}, "")
+console.log(cookedIngredients)
 
 
 
@@ -125,8 +141,8 @@ const topBrazilmovies = [
 ]
 
 const disneyTotalViewers = topBrazilmovies
-  .filter(movie => movie.distributedBy === "Disney")
-  .reduce((acc, viewers) => acc + viewers.peopleAmount, 0)
+  .filter(({distributedBy}) => distributedBy === "Disney")
+  .reduce((acc, { peopleAmount }) => acc + peopleAmount, 0)
 console.log(disneyTotalViewers)
 
 const ul = document.querySelector(".list-group")
@@ -166,13 +182,8 @@ const pets = [
 ]
 
 const dogs = pets
-  .filter(pet => pet.type === "Dog")
-  .map(dog => ({ 
-    name: dog.name,
-    age: dog.age * 7,
-    gender: dog.gender,
-    type: dog.type
-  }))
+  .filter(({ type }) => type === "Dog")
+  .map(({ name, age, gender, type }) => ({ name, age: age * 7, gender, type }))
 console.log(dogs)
 
 
