@@ -75,9 +75,7 @@ const tarantinoMovies = [
 
 
 
-/*
-  06
-
+/* 06
   - Gere um novo array que contém apenas os nomes das séries abaixo;
   - Exiba o novo array no console.    
 */
