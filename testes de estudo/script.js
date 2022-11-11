@@ -1,28 +1,23 @@
-const btn = document.querySelector("button")
-const divA = document.querySelector(".a")
-const divB = document.querySelector(".b")
-const divC = document.querySelector(".c")
-const divD = document.querySelector(".d")
-
+const form  = document.querySelector("form")
 const answers = ["YES", "NO"]
+const popup = document.querySelector(".popup")
 
-btn.addEventListener("click", () => {
-  const input1 = document.querySelector('input[name="yes-no1"]:checked')
-  const input2 = document.querySelector('input[name="yes-no2"]:checked')
+console.log(popup)
+form.addEventListener("submit", e => {
+  e.preventDefault()
 
-  if (input1.value === "YES") {
-    divA.style.background = "green"
-    divB.style.background = "none"
-  } else {
-    divA.style.background = "none"
-    divB.style.background = "red"
-  }
+  score = 0
+  const userAnswers = [
+    form.yesNo1.value,
+    form.yesNo2.value
+  ]
 
-  if (input2.value === "NO") {
-    divD.style.background = "green"
-    divC.style.background = "none"
-  } else {
-    divD.style.background = "none"
-    divC.style.background = "red"
-  }
+  userAnswers.forEach((item, index) => {
+    if (item === answers[index]) {
+      score += 50
+    }
+  })
+  popup.style.display = "block"
+  popup.textContent = `Score: ${score}`
+  console.log("Score: ", score)
 })
