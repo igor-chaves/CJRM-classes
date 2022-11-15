@@ -22,11 +22,15 @@ const people = [
   { firstName: 'Eric', lastName: 'Silva', score: 82 }
 ]
 
-const peopleCopy = people.map(item => item)
-const reorder = peopleCopy.sort((item1, item2) => item1.score - item2.score)
+// cria uma cópia do array e dos objetos
+const peopleOrderedByScore = people
+  .map(({ firstName, lastName, score }) => ({ firstName, lastName, score }))
+  .sort((a, b) => a.score - b.score)
 // ordenar strings
-// const reorder = peopleCopy.sort((item1, item2) => item1.firstName > item2.firstName ? 1 : -1)
-console.log(peopleCopy)
+// const reorder = peopleOrderedByScore.sort((a, b) => a.firstName > b.firstName ? 1 : -1)
+console.log(people)
+console.log(peopleOrderedByScore)
+
 
 
 
@@ -41,8 +45,7 @@ console.log(peopleCopy)
 */
 const animals = ['cão', 'gato', 'boi', 'leão', 'gnu', 'alce', 'ema']
 
-const animalsCopy = animals.map(animal => animal)
-const threeLettersAnimals = animalsCopy.filter(animal => animal.length === 3)
+const threeLettersAnimals = animals.filter(({ length }) => length === 3)
 // debugger
 console.log(threeLettersAnimals)
 
@@ -54,7 +57,7 @@ console.log(threeLettersAnimals)
   - Baseado no array "animals", gere um novo array com a quantidade de letras do 
     nome de cada animal. Ex.: [6, 8, 2].
 */
-const amountLettersAnimals = animalsCopy.map(animal => animal.length)
+const amountLettersAnimals = animals.map(({ length }) => length)
 console.log(amountLettersAnimals)
 
 
@@ -74,10 +77,10 @@ const friends = [
   { id: 5, name: 'Solange', nearMe: false }
 ]
 
-const friendsCopy = friends
-    .map(friend => friend)
-    .filter(friend => {if (friend.nearMe) return friend.name})
-console.log(friendsCopy)
+const friendsNear = friends.filter(({ nearMe }) => nearMe)
+const nameFriendsNear = friendsNear.map(({ name }) => name)
+console.log(friendsNear)
+console.log(nameFriendsNear)
 
 
 
@@ -89,7 +92,7 @@ console.log(friendsCopy)
 */
 const numbers = [46, 86, 212, 29, 51, 9, 25, 42, 81]
 const finalNumber = numbers
-    .filter(number => number % 2 === 1)
+    .filter(number => number % 2)
     .reduce((acc, number) => acc + number, 0)
 console.log(finalNumber)
 
@@ -116,6 +119,6 @@ const data = [{
 }]
 
 const totalPopulation = data
-    .filter(item => item.country !== "China")
-    .reduce((acc, country) => acc + country.population, 0)
+    .filter( ({ country }) => country !== "China")
+    .reduce((acc, { population }) => acc + population, 0)
 console.log(totalPopulation)
