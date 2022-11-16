@@ -10,7 +10,10 @@ mainForm.addEventListener("submit", e => {
     e.preventDefault()
 
     const inputValue = e.target.firstInput.value.trim()
-    ul.innerHTML += `<li>${inputValue}</li>`
+    ul.innerHTML += `
+    <li>${inputValue}
+        <img class="deleteIcon" src="./trash.svg"></img>
+    </li>`
 
     e.target.reset()
 })
@@ -20,12 +23,19 @@ mainForm.addEventListener("submit", e => {
 btn.addEventListener("click", e => {
     e.preventDefault()
     
-    ul.innerHTML += `<li>${input.value}</li>`
+    ul.innerHTML += `
+    <li>${input.value}
+        <img class="deleteIcon" src="./trash.svg"></img>
+    </li>`
 
     mainForm.reset()
 })
 
 
 // deleta LIs da UL
-ul.addEventListener("click", e => e.target.remove())
-
+ul.addEventListener("click", e => {
+    // e.target.remove()
+    if (Array.from(e.target.classList).includes("deleteIcon")) {
+        e.target.parentElement.remove()
+    }
+})
