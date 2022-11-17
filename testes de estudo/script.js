@@ -17,6 +17,7 @@ form.addEventListener("submit", e => {
       score += 50
     }
   })
+  
   popup.style.display = "block"
   popup.textContent = `Score: ${score}`
   console.log("Score: ", score)
