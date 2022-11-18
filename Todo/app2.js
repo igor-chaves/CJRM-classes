@@ -3,6 +3,10 @@ const findBtn = document.querySelector(".findButton")
 const findInput = document.querySelector(".findInput")
 const ul = document.querySelector(".mainList")
 const addForm = document.querySelector(".addForm")
+const modal = document.querySelector(".modalContainer")
+const yesBtnModal = document.querySelector("#yesBtnModal")
+const noBtnModal = document.querySelector("#noBtnModal")
+
 
 // Faz busca no TODO list (via formulário + botão)
 findForm.addEventListener("submit", e => {
@@ -63,9 +67,31 @@ addForm.addEventListener("submit", e => {
 })
 
 // Deleta LIs do TODO list (remove LIs da UL)
+// ul.addEventListener("click", e => {
+//     if (Array.from(e.target.classList).includes("deleteIcon")) {
+//         e.target.parentElement.remove()
+//     }
+// })
+
+
 ul.addEventListener("click", e => {
-    // e.target.remove()
     if (Array.from(e.target.classList).includes("deleteIcon")) {
-        e.target.parentElement.remove()
+        // shows modal
+        modal.style.display = "block"
+        const ulTarget = e.target.parentElement
+
+        // confirm button to delete element
+        yesBtnModal.addEventListener("click", () => {
+            ulTarget.remove()
+            modal.style.display = "none"
+        })
+        
+        noBtnModal.addEventListener("click", () => {
+            modal.style.display = "none"
+        })
+        
+        modal.addEventListener("click", () => {
+            modal.style.display = "none"
+        })
     }
 })
