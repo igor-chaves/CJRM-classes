@@ -27,6 +27,8 @@ const setScore = () => {
 const showScore = () => {
     scoreDiv.textContent = score
     scoreDiv.style.display = "flex"
+
+    setTimeout(() => scoreDiv.style.display = "none", 3000)
 }
 
 const resetFormAndScore = () => {
