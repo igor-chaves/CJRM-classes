@@ -5,7 +5,7 @@ const checkBtn = document.querySelector(".checkBtn")
 
 let score = 0
 
-const getUserAnswers = () => {
+const getAnswers = () => {
     return userAnswers = [
         formQuiz.question1.value,
         formQuiz.question2.value,
@@ -37,22 +37,22 @@ const resetFormAndScore = () => {
 }
 
 const checkAnswers = () => {
-    const checkEmptyAnswer = userAnswers.some(answer => answer === "")
+    //if ANY answer is empty, return TRUE
+    const emptyAnswer = userAnswers.some(answer => answer === "")
 
-    if (checkEmptyAnswer) alert("You must select all answers!!")
+    if (emptyAnswer) alert("You must select all answers!!")
     else {
         setScore(score)
         showScore()
-        resetFormAndScore()
     }
     resetFormAndScore()
 }
 
-const getAnswers = e => {
+const getUserAnswers = e => {
     e.preventDefault()
 
-    getUserAnswers()
+    getAnswers()
     checkAnswers()
 }
 
-checkBtn.addEventListener("click", getAnswers)
+checkBtn.addEventListener("click", getUserAnswers)
