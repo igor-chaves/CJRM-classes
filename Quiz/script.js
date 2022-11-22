@@ -1,28 +1,58 @@
-const btn = document.querySelector("button")
-const divA = document.querySelector(".a")
-const divB = document.querySelector(".b")
-const divC = document.querySelector(".c")
-const divD = document.querySelector(".d")
+const quizAnswers = ["A", "A", "B"]
+const formQuiz = document.querySelector(".container-quiz")
+const scoreDiv = document.querySelector(".container-score")
+const checkBtn = document.querySelector(".checkBtn")
 
-const answers = ["YES", "NO"]
+let score = 0
 
-btn.addEventListener("click", () => {
-  const input1 = document.querySelector('input[name="yes-no1"]:checked')
-  const input2 = document.querySelector('input[name="yes-no2"]:checked')
+const getUserAnswers = () => {
+    return userAnswers = [
+        formQuiz.question1.value,
+        formQuiz.question2.value,
+        formQuiz.question3.value,
+    ]
+}
 
-  if (input1.value === "YES") {
-    divA.style.background = "green"
-    divB.style.background = "none"
-  } else {
-    divA.style.background = "none"
-    divB.style.background = "red"
-  }
+const setScore = () => {
+    quizAnswers.forEach((answer, i) => {
+        const answersMatches = answer === userAnswers[i]
 
-  if (input2.value === "NO") {
-    divD.style.background = "green"
-    divC.style.background = "none"
-  } else {
-    divD.style.background = "none"
-    divC.style.background = "red"
-  }
-})
+        if (answersMatches) {
+            console.log("acertou a questao", i+1)
+            return score += 33
+        }
+    })
+}
+
+const showScore = () => {
+    scoreDiv.textContent = score
+    scoreDiv.style.display = "flex"
+
+    setTimeout(() => scoreDiv.style.display = "none", 3000)
+}
+
+const resetFormAndScore = () => {
+    formQuiz.reset()
+    return score = 0
+}
+
+const checkAnswers = () => {
+    const checkEmptyAnswer = userAnswers.some(answer => answer === "")
+
+    if (checkEmptyAnswer) alert("You must select all answers!!")
+    else {
+        setScore(score)
+        showScore()
+        resetFormAndScore()
+    }
+    resetFormAndScore()
+}
+
+const getAnswers = e => {
+    e.preventDefault()
+
+    getUserAnswers()
+    checkAnswers()
+}
+
+checkBtn.addEventListener("click", getAnswers)

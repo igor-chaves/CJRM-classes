@@ -1,3 +1,37 @@
-.container {
-    padding: 3rem;
+.container-quiz {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex;
+    background-color: rgb(240, 163, 163);
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+.container-score {
+    background-color: rgb(146, 46, 46);
+    color: white;
+    padding: 10px;
+    display: none;
+}
+
+.container-question1 {
+    background-color: rgb(85, 83, 83);
+    padding: 10px;
+}
+
+.container-question2 {
+    background-color: rgb(161, 156, 156);
+    padding: 10px;
+}
+
+.container-question3 {
+    background-color: gray;
+    padding: 10px;
+}
+
+.container-checkBtn {
+    padding: 10px;
 }
