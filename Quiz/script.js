@@ -40,6 +40,8 @@ const checkAnswers = () => {
     //if ANY answer is empty, return TRUE
     const emptyAnswer = userAnswers.some(answer => answer === "")
 
+
+    // tentar colocar um ternario no lugar do IF-ELSE
     if (emptyAnswer) alert("You must select all answers!!")
     else {
         setScore(score)
