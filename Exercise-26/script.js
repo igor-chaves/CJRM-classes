@@ -5,19 +5,14 @@
 */
 
 const present = new Date()
-const formatTimeUnit = unit => {
-    return String(unit).length === 1 ? `0${unit}` : unit
-}
+
+const formatTimeUnit = unit => String(unit).length === 1 ? `0${unit}` : unit
 
 const formatDate = date => {
-    const day = date.getDate()
-    const month = date.getMonth() + 1
+    const day = formatTimeUnit(date.getDate())
+    const month = formatTimeUnit(date.getMonth() + 1)
     const year = date.getFullYear()
-
-    const days = formatTimeUnit(day)
-    const months = formatTimeUnit(month)
-
-    return `${days}/${months}/${year}`
+    return `${day}/${month}/${year}`
 }
 
 console.log(formatDate(present))
@@ -32,43 +27,37 @@ console.log(formatDate(present))
   - Não utilize a date-fns.
 */
 
+const weekDays = [
+    "domingo",
+    "segunda",
+    "terça",
+    "quarta",
+    "quinta",
+    "sexta",
+    "sábado",
+]
+const months = [
+    "janeiro",
+    "fevereiro",
+    "março",
+    "abril",
+    "maio",
+    "junho",
+    "julho",
+    "agosto",
+    "setembro",
+    "outubro",
+    "novembro",
+    "dezembro"
+]
 const formatDateInfo = dateTime => {
+    const hour = formatTimeUnit(dateTime.getHours())
+    const minute = formatTimeUnit(dateTime.getMinutes())
+    const weekDay = weekDays[dateTime.getDay()]
     const day = dateTime.getDate()
-    const weekDay = dateTime.getDay()
-    const month = dateTime.getMonth()
+    const month = months[dateTime.getMonth()]
     const year = dateTime.getFullYear()
-
-    const hour = dateTime.getHours()
-    const minute = dateTime.getMinutes()
-
-    const weekDays = [
-        "domingo",
-        "segunda",
-        "terça",
-        "quarta",
-        "quinta",
-        "sexta",
-        "sábado",
-    ]
-    const months = [
-        "janeiro",
-        "fevereiro",
-        "março",
-        "abril",
-        "maio",
-        "junho",
-        "julho",
-        "agosto",
-        "setembro",
-        "outubro",
-        "novembro",
-        "dezembro"
-    ]
-
-    const hours = formatTimeUnit(hour)
-    const minutes = formatTimeUnit(minute)
-
-    return `${hours}:${minutes} - ${weekDays[weekDay]}, ${day} de ${months[month]} de ${year}`
+    return `${hour}:${minute} - ${weekDay}, ${day} de ${month} de ${year}`
 }
 
 console.log(formatDateInfo(present))
@@ -104,13 +93,10 @@ console.log(identificacao, isVerified)
 const robotA = { name: 'Bender' }
 const robotB = { name: 'HAL 9000' }
 
-const nameA = robotA.name
-const nameB = robotB.name
+const { name: nameA } = robotA
+const { name: nameB } = robotB
 
-const { name: bender } = robotA
-const { name: hal9000 } = robotB
-
-console.log(bender, hal9000)
+console.log(nameA, nameB)
 
 
 
@@ -123,61 +109,53 @@ console.log(bender, hal9000)
   - Exiba o objeto no console.
 */
 
-const a = 'a'
-const b = 'b'
-const c = 'c'
+const a = '1'
+const b = '2'
+const c = '3'
+
+const alphabet = { a, b, c }
+console.log(alphabet)
 
 
-/*
-  06
 
+
+
+/* 06
   - Refatore o código abaixo.
 */
 
-const useDataSomewhereElse = value => {
-  console.log(value)
+const useDataSomewhereElse = value => console.log(value)
+
+const updateSomething = ({ target, property, willChange } = {}) => {
+    if (willChange === 'valor indesejado') willChange = 'valor desejado'
+    useDataSomewhereElse({ target, property, willChange })
 }
-
-const updateSomething = (data = {}) => {
-  const target = data.target
-  const property = data.property
-  let willChange = data.willChange
-
-  if (willChange === 'valor indesejado') {
-    willChange = 'valor desejado'
-  }
-
-  useDataSomewhereElse({
-    target: target,
-    property: property,
-    willChange: willChange
-  })
-}
-
 updateSomething({ target: '1', property: '2', willChange: 'valor indesejado' })
 
-/*
-  07
 
+
+
+
+/* 07
   - O código abaixo é o mesmo do relógio digital que implementamos na aula 
     passada. Refatore-o.
 */
 
 const clockContainer = document.querySelector('.clock-container')
 
-const updateClock = () => {
-  const present = new Date()
-  const hours = present.getHours()
-  const minutes = present.getMinutes()
-  const seconds = present.getSeconds()
-
-  const clockHTML = `
-    <span>${formatTimeUnit(hours)}</span> :
-    <span>${formatTimeUnit(minutes)}</span> :
-    <span>${formatTimeUnit(seconds)}</span>
+const getClockHTML = (hours, minutes, seconds) => `
+    <span>${hours}</span> :
+    <span>${minutes}</span> :
+    <span>${seconds}</span>
   `
 
-  clockContainer.innerHTML = clockHTML
+const updateClock = () => {
+  const present = new Date()
+  const hours = formatTimeUnit(present.getHours())
+  const minutes = formatTimeUnit(present.getMinutes())
+  const seconds = formatTimeUnit(present.getSeconds())
+
+  clockContainer.innerHTML = getClockHTML(hours, minutes, seconds)
 }
 
 setInterval(updateClock, 1000)
