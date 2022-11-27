@@ -4,11 +4,79 @@
   - Não utilize a date-fns.
 */
 
-/* 02
+const present = new Date()
+const formatTimeUnit = unit => {
+    return String(unit).length === 1 ? `0${unit}` : unit
+}
+
+const formatDate = date => {
+    const day = date.getDate()
+    const month = date.getMonth() + 1
+    const year = date.getFullYear()
+
+    const days = formatTimeUnit(day)
+    const months = formatTimeUnit(month)
+
+    return `${days}/${months}/${year}`
+}
+
+console.log(formatDate(present))
+
+
+
+
+
+/*　02
   - Crie uma função que recebe uma data por parâmetro e retorna o horário e a 
     data na formatação: "03:07 - domingo, 7 de junho de 2020";
   - Não utilize a date-fns.
 */
+
+const formatDateInfo = dateTime => {
+    const day = dateTime.getDate()
+    const weekDay = dateTime.getDay()
+    const month = dateTime.getMonth()
+    const year = dateTime.getFullYear()
+
+    const hour = dateTime.getHours()
+    const minute = dateTime.getMinutes()
+
+    const weekDays = [
+        "domingo",
+        "segunda",
+        "terça",
+        "quarta",
+        "quinta",
+        "sexta",
+        "sábado",
+    ]
+    const months = [
+        "janeiro",
+        "fevereiro",
+        "março",
+        "abril",
+        "maio",
+        "junho",
+        "julho",
+        "agosto",
+        "setembro",
+        "outubro",
+        "novembro",
+        "dezembro"
+    ]
+
+    const hours = formatTimeUnit(hour)
+    const minutes = formatTimeUnit(minute)
+
+    return `${hours}:${minutes} - ${weekDays[weekDay]}, ${day} de ${months[month]} de ${year}`
+}
+
+console.log(formatDateInfo(present))
+
+
+
+
+
 
 /* 03
   - Faça um destructuring nas propriedades "id" e "isVerified" do objeto abaixo;
@@ -17,6 +85,13 @@
 */
 
 const user = { id: 42, isVerified: true }
+const { id: identificacao, isVerified } = user
+console.log(identificacao, isVerified)
+
+
+
+
+
 
 /* 04
   - Faça um destructuring nas propriedades "name" dos objetos abaixo;
@@ -29,6 +104,18 @@ const user = { id: 42, isVerified: true }
 const robotA = { name: 'Bender' }
 const robotB = { name: 'HAL 9000' }
 
+const nameA = robotA.name
+const nameB = robotB.name
+
+const { name: bender } = robotA
+const { name: hal9000 } = robotB
+
+console.log(bender, hal9000)
+
+
+
+
+
 /* 05
   - Usando shorthand property names, crie um objeto com as propriedades "a", 
     "b" e "c";
@@ -40,7 +127,10 @@ const a = 'a'
 const b = 'b'
 const c = 'c'
 
-/* 06
+
+/*
+  06
+
   - Refatore o código abaixo.
 */
 
@@ -66,7 +156,9 @@ const updateSomething = (data = {}) => {
 
 updateSomething({ target: '1', property: '2', willChange: 'valor indesejado' })
 
-/* 07
+/*
+  07
+
   - O código abaixo é o mesmo do relógio digital que implementamos na aula 
     passada. Refatore-o.
 */
@@ -80,9 +172,9 @@ const updateClock = () => {
   const seconds = present.getSeconds()
 
   const clockHTML = `
-    <span>${String(hours).length === 1 ? `0${hours}` : hours}</span> :
-    <span>${String(minutes).length === 1 ? `0${minutes}` : minutes}</span> :
-    <span>${String(seconds).length === 1 ? `0${seconds}` : seconds}</span>
+    <span>${formatTimeUnit(hours)}</span> :
+    <span>${formatTimeUnit(minutes)}</span> :
+    <span>${formatTimeUnit(seconds)}</span>
   `
 
   clockContainer.innerHTML = clockHTML

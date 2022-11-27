@@ -55,16 +55,16 @@
 
 
 
-// const present = new Date()
-// const past = new Date("Nov 24 2022 16:22:30")
+const present = new Date()
+const past = new Date("Nov 30 2022 16:22:30")
 
-// console.log(dateFns.format(present, "MMMM"))
-// console.log(dateFns.format(present, "YY"))
-// console.log(dateFns.format(present, "dddd"))
-// console.log(dateFns.format(present, "Do"))
-// console.log(dateFns.format(present, "DD/MM/YYYY"))
+console.log(dateFns.format(present, "MMMM"))
+console.log(dateFns.format(present, "YY"))
+console.log(dateFns.format(present, "dddd"))
+console.log(dateFns.format(present, "Do"))
+console.log(dateFns.format(present, "DD/MM/YYYY"))
 
-// console.log(dateFns.distanceInWords(present, past, { addSuffix: true }))
+console.log(dateFns.distanceInWords(present, past, { addSuffix: true }))
 
 
 
