@@ -54,7 +54,7 @@
 
 
 
-
+// Biblioteca (lib): datefns
 const present = new Date()
 const past = new Date("Nov 30 2022 16:22:30")
 
@@ -71,7 +71,3 @@ console.log(dateFns.distanceInWords(present, past, { addSuffix: true }))
 
 
 //-----------------------------------------------------------------
-
-
-
-
