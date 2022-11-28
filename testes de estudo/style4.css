@@ -1,0 +1,37 @@
+body {
+    background: rgb(0, 0, 0);
+    color: white;
+}
+.container {
+}
+
+.innerContainer {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.small-box {
+    border: 1px solid black;
+    width: 200px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    margin: 5px;
+}
+
+.box1 {
+    border: 2px solid rgb(42,100,195);
+}
+.box2 {
+    border: 2px solid rgb(220,168,57)
+}
+.box3 {
+    border: 2px solid rgb(215,80,220)
+}
+.box4 {
+    border: 2px solid rgb(205,77,35)
+}
