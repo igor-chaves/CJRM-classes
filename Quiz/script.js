@@ -16,7 +16,7 @@ const getAnswers = () => {
 const setScore = () => {
     quizAnswers.forEach((answer, i) => {
         const answersMatches = answer === userAnswers[i]
-
+        
         if (answersMatches) {
             console.log("acertou a questao", i+1)
             return score += 33
@@ -42,6 +42,7 @@ const checkAnswers = () => {
 
 
     // tentar colocar um ternario no lugar do IF-ELSE
+    // const condition = emptyAnswer ? alert("preencha tudo") : setScore() showScore()。
     if (emptyAnswer) alert("You must select all answers!!")
     else {
         setScore(score)
