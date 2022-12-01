@@ -13,6 +13,7 @@ const getAnswers = () => {
     ]
 }
 
+// every correct answer adds 33 points
 const setScore = () => {
     quizAnswers.forEach((answer, i) => {
         const answersMatches = answer === userAnswers[i]
@@ -40,14 +41,8 @@ const checkAnswers = () => {
     //if ANY answer is empty, return TRUE
     const emptyAnswer = userAnswers.some(answer => answer === "")
 
+    emptyAnswer ? alert("You must select all answers!!") : setScore(score); showScore()
 
-    // tentar colocar um ternario no lugar do IF-ELSE
-    // const condition = emptyAnswer ? alert("preencha tudo") : setScore() showScore()。
-    if (emptyAnswer) alert("You must select all answers!!")
-    else {
-        setScore(score)
-        showScore()
-    }
     resetFormAndScore()
 }
 
