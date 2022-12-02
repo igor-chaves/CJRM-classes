@@ -1,8 +1,8 @@
-const quizAnswers = ["A", "A", "B"]
 const formQuiz = document.querySelector(".container-quiz")
 const scoreDiv = document.querySelector(".container-score")
 const checkBtn = document.querySelector(".checkBtn")
 
+const quizAnswers = ["A", "A", "B"]
 let score = 0
 
 const getAnswers = () => {
@@ -41,6 +41,7 @@ const checkAnswers = () => {
     //if ANY answer is empty, return TRUE
     const emptyAnswer = userAnswers.some(answer => answer === "")
 
+    // ainda esta executando a setScore() e showScore() se o emptyAnswers for TRUE
     emptyAnswer ? alert("You must select all answers!!") : setScore(score); showScore()
 
     resetFormAndScore()

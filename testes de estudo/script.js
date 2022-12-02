@@ -1,19 +1,19 @@
-// const present = new Date()
+const present = new Date()
 
-// console.log(present)
-// console.log(present.getFullYear())
-// console.log(present.getMonth())
-// console.log(present.getDate())
+console.log(present)
+console.log(present.getFullYear())
+console.log(present.getMonth())
+console.log(present.getDate())
 
-// console.log(present.getHours())
-// console.log(present.getMinutes())
-// console.log(present.getSeconds())
+console.log(present.getHours())
+console.log(present.getMinutes())
+console.log(present.getSeconds())
 
-// console.log(present.getTime())
+console.log(present.getTime())
 
-// console.log(present.toDateString())
-// console.log(present.toTimeString())
-// console.log(present.toLocaleString())
+console.log(present.toDateString())
+console.log(present.toTimeString())
+console.log(present.toLocaleString())
 
 
 
@@ -55,16 +55,16 @@
 
 
 // Biblioteca (lib): datefns
-const present = new Date()
-const past = new Date("Nov 30 2022 16:22:30")
+// const present = new Date()
+// const past = new Date("Nov 30 2022 16:22:30")
 
-console.log(dateFns.format(present, "MMMM"))
-console.log(dateFns.format(present, "YY"))
-console.log(dateFns.format(present, "dddd"))
-console.log(dateFns.format(present, "Do"))
-console.log(dateFns.format(present, "DD/MM/YYYY"))
+// console.log(dateFns.format(present, "MMMM"))
+// console.log(dateFns.format(present, "YY"))
+// console.log(dateFns.format(present, "dddd"))
+// console.log(dateFns.format(present, "Do"))
+// console.log(dateFns.format(present, "DD/MM/YYYY"))
 
-console.log(dateFns.distanceInWords(present, past, { addSuffix: true }))
+// console.log(dateFns.distanceInWords(present, past, { addSuffix: true }))
 
 
 

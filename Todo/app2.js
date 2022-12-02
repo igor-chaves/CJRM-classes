@@ -76,6 +76,7 @@ addForm.addEventListener("submit", e => {
 
 ul.addEventListener("click", e => {
     if (Array.from(e.target.classList).includes("deleteIcon")) {
+        
         // shows modal
         modal.style.display = "block"
         const ulTarget = e.target.parentElement
