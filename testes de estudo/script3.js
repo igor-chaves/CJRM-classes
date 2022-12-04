@@ -1,5 +1,3 @@
-
-
 /* 01
   - Crie uma função que recebe uma data por parâmetro e retorna a data na 
     formatação "DD/MM/AAAA". Exemplo: 03/07/2021;
