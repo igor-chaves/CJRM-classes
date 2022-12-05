@@ -81,6 +81,8 @@ modal.addEventListener("keydown", e => {
     if (e.key === "Escape") {modalInactive, console.log("modal is gone")}
 })
 
+
+//CORRIGIR ISSO DAQUI...
 modal.addEventListener("keyup", e => {
     // when esc is pressed, modal should disappear
     if (e.key === "Escape") {
@@ -88,6 +90,7 @@ modal.addEventListener("keyup", e => {
         console.log(e.key)
     }
 })
+//...ATE AQUI
 
 
 ul.addEventListener("click", e => {
@@ -96,8 +99,6 @@ ul.addEventListener("click", e => {
         // shows modal
         modal.style.display = "block"
         const ulTarget = e.target.parentElement
-
-
 
         // confirm button to delete element
         yesBtnModal.addEventListener("click", () => {
