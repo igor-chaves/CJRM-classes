@@ -73,6 +73,22 @@ addForm.addEventListener("submit", e => {
 //     }
 // })
 
+modal.addEventListener("keydown", e => {
+    const modalActive = modal.style.display === "block"
+    const modalInactive = modal.style.display === "none"
+
+    // when esc is pressed, modal should disappear
+    if (e.key === "Escape") {modalInactive, console.log("modal is gone")}
+})
+
+modal.addEventListener("keyup", e => {
+    // when esc is pressed, modal should disappear
+    if (e.key === "Escape") {
+        modal.style.display === "none"
+        console.log(e.key)
+    }
+})
+
 
 ul.addEventListener("click", e => {
     if (Array.from(e.target.classList).includes("deleteIcon")) {
@@ -81,17 +97,16 @@ ul.addEventListener("click", e => {
         modal.style.display = "block"
         const ulTarget = e.target.parentElement
 
+
+
         // confirm button to delete element
         yesBtnModal.addEventListener("click", () => {
             ulTarget.remove()
             modal.style.display = "none"
         })
         
+        // cancel action button
         noBtnModal.addEventListener("click", () => {
-            modal.style.display = "none"
-        })
-        
-        modal.addEventListener("click", () => {
             modal.style.display = "none"
         })
     }

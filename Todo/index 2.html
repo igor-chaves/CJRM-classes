@@ -8,6 +8,7 @@
 <body>
     <form class="findForm">
         <div class="findContainer">
+            <label for="">Search:</label>
             <input class="findInput" name="findInputName">
         </div>
     </form>
@@ -16,6 +17,7 @@
 
     <form class="addForm">
         <div class="addContainer">
+            <label for="">Add todo:</label>
             <input class="addInput" name="addInputName">
             <button class="addButton">Add</button>
         </div>
@@ -24,9 +26,11 @@
     <div class="modalContainer">
         <div class="modalContent">
             <span>Do you really wish to delete this item from the list?</span>
+            <div>
+                <button id="yesBtnModal">Yes</button>
+                <button id="noBtnModal">No</button>
+            </div>
             <span id="close">&times;</span>
-            <button id="yesBtnModal">Yes</button>
-            <button id="noBtnModal">No</button>
         </div>
     </div>
     
