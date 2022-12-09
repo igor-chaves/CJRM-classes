@@ -107,61 +107,32 @@
       na frase acima.
 */
 
-let booksBox = {
-  spaces: 5,
-  booksIn: 0
-}
-
-booksBox.addBooks = booksQnt => {
-    if (booksBox.booksIn === booksBox.spaces) {
-        return `A caixa já está cheia`
-    }
-
-    if (booksBox.booksIn + booksQnt < booksBox.spaces) {
-        const availableSpaces = booksBox.spaces - booksBox.booksIn
-        const fitPluralOrSingular = availableSpaces === 1 ? "cabe" : "cabem"
-        const pluralOrSingular = availableSpaces === 1 ? "livro" : "livros"
-        return `Só ${fitPluralOrSingular} mais ${availableSpaces} ${pluralOrSingular}`
-    }
-
-    booksBox.booksIn += booksQnt
-    return `Já há ${booksBox.booksIn} livros na caixa`
-}
-
-console.log(booksBox.addBooks(2))
-// console.log(booksBox.addBooks(2))
-console.log(booksBox)
-
-
-//-----------------------------------------------------------------------
-console.log("----------------------------------------------------------")
-console.log("----------------------------------------------------------")
-//-----------------------------------------------------------------------
-
-
-
-// Crie um método que irá adicionar livros na caixa.
-// Receber por parâmetro o número de livros que serão colocados na caixa. 
-// Se a caixa já estiver cheia retornar a frase: "A caixa já está cheia".
-
 let caixa = {
     espacos: 5,
     livros: 0
 }
 
+
 caixa.addLivros = qnt => {
+    const { espacos } = caixa
+    
     caixa.livros += qnt
 
-    const espacoRestante = caixa.espacos - caixa.livros
-    const espacoExcedido = caixa.livros - caixa.espacos
+    const singularPlural = (qnt, singular, plural) => qnt === 1 ? singular : plural
+    
+    const caixaCheia = caixa.livros === espacos
+    const caixaComEspaco = caixa.livros < espacos
 
-    const cabeCabem = espacoRestante === 1 ? "Cabe" : "Cabem"
-    const livroLivros = espacoRestante === 1 ? "livro" : "livros"
-    const livroLivrosExcedidos = espacoExcedido === 1 ? "livro" : "livros"
+    const espacoRestante = espacos - caixa.livros
+    const espacoExcedido = caixa.livros - espacos
+    
+    const cabeCabem = singularPlural(espacoRestante, "Cabe", "Cabem")
+    const livroLivros = singularPlural(espacoRestante, "livro", "livros")
+    const livroLivrosExcedidos = singularPlural(espacoExcedido, "livro", "livros")
 
-    if (caixa.livros === caixa.espacos) return `A caixa já está cheia.`
-    if (caixa.livros < caixa.espacos) return `${cabeCabem} mais ${espacoRestante} ${livroLivros}.`
+    if (caixaCheia) return `A caixa já está cheia.`
+    if (caixaComEspaco) return `${cabeCabem} mais ${espacoRestante} ${livroLivros}.`
     return `A quantidade de livros na caixa ultrapassou em ${espacoExcedido} ${livroLivrosExcedidos}.`
 }
 
-console.log(caixa.addLivros(5))
+console.log(caixa.addLivros(3))
