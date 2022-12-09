@@ -1,88 +1,88 @@
-/* 01
-  - Implemente um código assíncrono entre os console.log() abaixo.
-*/
-console.log('Linha 1')
-console.log('Linha 2')
-console.log('Linha 3')
-console.log('Linha 4')
+// /* 01
+//   - Implemente um código assíncrono entre os console.log() abaixo.
+// */
+// console.log('Linha 1')
+// console.log('Linha 2')
+// console.log('Linha 3')
+// console.log('Linha 4')
 
-setTimeout(() => console.log("This is a callback function"), 2000)
+// setTimeout(() => console.log("This is a callback function"), 2000)
 
-console.log('Linha 5')
-console.log('Linha 6')
-console.log('Linha 7')
-console.log('Linha 8')
-
-
-
-
-
-/* 02
-  - Descomente o código abaixo e crie a função que fará a string dentro da 
-    "logGreeting" ser exibida no console.
-*/
-function logGreeting (name) {
-  console.log(`olá, ${name}`)
-}
-
-const x = (callback) => {callback("igor")}
-x(logGreeting)
+// console.log('Linha 5')
+// console.log('Linha 6')
+// console.log('Linha 7')
+// console.log('Linha 8')
 
 
 
 
 
-/* 03
-  - O código abaixo possui uma parte que pode ser isolada. Isole-a.
-*/
-const numbers = [3, 4, 10, 20]
-const getLessThan5 = num => num < 5
-const lesserThanFive = numbers.filter(getLessThan5)
-console.log(lesserThanFive)
+// /* 02
+//   - Descomente o código abaixo e crie a função que fará a string dentro da 
+//     "logGreeting" ser exibida no console.
+// */
+// function logGreeting (name) {
+//   console.log(`olá, ${name}`)
+// }
+
+// const x = (callback) => {callback("igor")}
+// x(logGreeting)
 
 
 
 
 
-/* 04
-  - Refatore o código abaixo.
-*/
-const prices = [12, 19, 7, 209]
-const getTotalPrice = (acc, price) => acc + price
-let totalPrice = prices.reduce(getTotalPrice, 0)
-console.log(`Preço total: ${totalPrice}`)
+// /* 03
+//   - O código abaixo possui uma parte que pode ser isolada. Isole-a.
+// */
+// const numbers = [3, 4, 10, 20]
+// const getLessThan5 = num => num < 5
+// const lesserThanFive = numbers.filter(getLessThan5)
+// console.log(lesserThanFive)
 
 
 
 
 
-/* 05
-  - Abaixo da declaração do objeto "car", modifique a cor do carro para 'azul';
-  - Não insira `car.color = azul`.
-  - Não insira `car['color'] = azul`.
-*/
-let car = { color: 'amarelo' }
-let secondCar = car
-secondCar.color = "azul"
-console.log(car.color, secondCar.color)
+// /* 04
+//   - Refatore o código abaixo.
+// */
+// const prices = [12, 19, 7, 209]
+// const getTotalPrice = (acc, price) => acc + price
+// let totalPrice = prices.reduce(getTotalPrice, 0)
+// console.log(`Preço total: ${totalPrice}`)
 
 
 
 
-/* 06
-  - Crie uma função que recebe 3 argumentos;
-  - Se um dos 3 argumentos não for passado na invocação, a string 'A função 
-    deve ser invocada com 3 argumentos' deve ser retornada;
-  - Se todos os argumentos forem passados, retorne a string 'A função foi 
-    invocada com 3 argumentos'.
-*/
-const myFunc = (n1, n2, n3) => {
-    const isAnyUndefined = [n1, n2, n3].includes(undefined)
-    return isAnyUndefined
-        ? "A função deve ser invocada com 3 argumentos"
-        : "A função foi invocada com 3 argumentos"
-}
-console.log(myFunc(2, {}, []))
+
+// /* 05
+//   - Abaixo da declaração do objeto "car", modifique a cor do carro para 'azul';
+//   - Não insira `car.color = azul`.
+//   - Não insira `car['color'] = azul`.
+// */
+// let car = { color: 'amarelo' }
+// let secondCar = car
+// secondCar.color = "azul"
+// console.log(car.color, secondCar.color)
+
+
+
+
+// /* 06
+//   - Crie uma função que recebe 3 argumentos;
+//   - Se um dos 3 argumentos não for passado na invocação, a string 'A função 
+//     deve ser invocada com 3 argumentos' deve ser retornada;
+//   - Se todos os argumentos forem passados, retorne a string 'A função foi 
+//     invocada com 3 argumentos'.
+// */
+// const myFunc = (n1, n2, n3) => {
+//     const isAnyUndefined = [n1, n2, n3].includes(undefined)
+//     return isAnyUndefined
+//         ? "A função deve ser invocada com 3 argumentos"
+//         : "A função foi invocada com 3 argumentos"
+// }
+// console.log(myFunc(2, {}, []))
 
 
 
@@ -117,7 +117,7 @@ booksBox.addBooks = booksQnt => {
         return `A caixa já está cheia`
     }
 
-    if (booksBox.booksIn + booksQnt > booksBox.spaces) {
+    if (booksBox.booksIn + booksQnt < booksBox.spaces) {
         const availableSpaces = booksBox.spaces - booksBox.booksIn
         const fitPluralOrSingular = availableSpaces === 1 ? "cabe" : "cabem"
         const pluralOrSingular = availableSpaces === 1 ? "livro" : "livros"
@@ -130,6 +130,38 @@ booksBox.addBooks = booksQnt => {
 
 console.log(booksBox.addBooks(2))
 // console.log(booksBox.addBooks(2))
-// console.log(booksBox.addBooks(1))
-// console.log(booksBox.addBooks(1))
 console.log(booksBox)
+
+
+//-----------------------------------------------------------------------
+console.log("----------------------------------------------------------")
+console.log("----------------------------------------------------------")
+//-----------------------------------------------------------------------
+
+
+
+// Crie um método que irá adicionar livros na caixa.
+// Receber por parâmetro o número de livros que serão colocados na caixa. 
+// Se a caixa já estiver cheia retornar a frase: "A caixa já está cheia".
+
+let caixa = {
+    espacos: 5,
+    livros: 0
+}
+
+caixa.addLivros = qnt => {
+    caixa.livros += qnt
+
+    const espacoRestante = caixa.espacos - caixa.livros
+    const espacoExcedido = caixa.livros - caixa.espacos
+
+    const cabeCabem = espacoRestante === 1 ? "Cabe" : "Cabem"
+    const livroLivros = espacoRestante === 1 ? "livro" : "livros"
+    const livroLivrosExcedidos = espacoExcedido === 1 ? "livro" : "livros"
+
+    if (caixa.livros === caixa.espacos) return `A caixa já está cheia.`
+    if (caixa.livros < caixa.espacos) return `${cabeCabem} mais ${espacoRestante} ${livroLivros}.`
+    return `A quantidade de livros na caixa ultrapassou em ${espacoExcedido} ${livroLivrosExcedidos}.`
+}
+
+console.log(caixa.addLivros(5))
