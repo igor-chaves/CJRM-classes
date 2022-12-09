@@ -1,7 +1,6 @@
 /* 01
   - Implemente um código assíncrono entre os console.log() abaixo.
 */
-
 console.log('Linha 1')
 console.log('Linha 2')
 console.log('Linha 3')
@@ -22,7 +21,6 @@ console.log('Linha 8')
   - Descomente o código abaixo e crie a função que fará a string dentro da 
     "logGreeting" ser exibida no console.
 */
-
 function logGreeting (name) {
   console.log(`olá, ${name}`)
 }
@@ -63,7 +61,6 @@ console.log(`Preço total: ${totalPrice}`)
   - Não insira `car.color = azul`.
   - Não insira `car['color'] = azul`.
 */
-
 let car = { color: 'amarelo' }
 let secondCar = car
 secondCar.color = "azul"
