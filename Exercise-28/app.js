@@ -17,8 +17,11 @@
 const request = new XMLHttpRequest()
 
 request.addEventListener("readystatechange", () => {
-  if (request.readyState === 4 && request.status === 200) {console.log(request, request.responseText); return}
-  if (request.readyState === 4) console.log("Não foi possível obter os dados do pokémon")
+  const RequestOk = request.readyState === 4 && request.status === 200
+  const RequestNotOk = request.readyState === 4
+
+  if (RequestOk) {console.log(request, request.responseText); return}
+  if (RequestNotOk) console.log("Não foi possível obter os dados do pokémon")
 })
 
 request.open("get", "https://pokeapi.co/api/v2/pokemon/pikachu")
@@ -84,7 +87,7 @@ person.sumAge(5)
 
 person.sumDistance = dist => {
     person.walkedDistance += dist
-    person.isWalking = "true"
+    person.isWalking = true
 }
 
 const meters = [5, 6, 4, 7]
@@ -141,7 +144,8 @@ console.log(person.addMsg())
 */
 
 const randomValues = [true, "0", 0, () => {}, [], {}, -1]
-// randomValues.forEach(value => console.log(value, "-->", Boolean(value)))
+const logBooleanValues = value => console.log(value, "-->", Boolean(value))
+randomValues.forEach(logBooleanValues)
 // valores falsy são 8 no total: false, null, undefined, NaN, 0, -0, 0n, ""
 
 
