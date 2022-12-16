@@ -97,18 +97,23 @@ const getPokemon = (pokemon, callback) => {
     const request = new XMLHttpRequest()
 
     request.addEventListener("readystatechange", () => {
-        if (request.readyState === 4 && request.status === 200) {
+        const requestOk = request.readyState === 4 && request.status === 200
+        const requestNotOk = request.readyState === 4
+
+        if (requestOk) {
             const data = JSON.parse(request.responseText)
             callback(null, data); return
         }
-        else if (request.readyState === 4) callback("Não foi possível obter o Pokemon", null)
+        if (requestNotOk) callback("Não foi possível obter o Pokemon", null)
     })
 
     request.open("get", `https://pokeapi.co/api/v2/pokemon/${pokemon}`)
     request.send()
 }
 
-const obtainedPokemonMsg = (error, data) => {console.log(`Pokemon obtido: ${data.species.name}`)}
+const obtainedPokemonMsg = (error, data) => error
+    ? console.log(error)
+    : console.log(`Pokemon obtido: ${data.name}`)
 
 getPokemon("bulbasaur", obtainedPokemonMsg)
 getPokemon("charmander", obtainedPokemonMsg)
@@ -118,8 +123,7 @@ getPokemon("squirtle", obtainedPokemonMsg)
 
 
 
-/*
-  02
+/* 02
 
   - Há algumas etapas, implementamos o método some, do zero;
   - Neste exercício, seu desafio será criar o método map, do zero;
@@ -136,6 +140,10 @@ getPokemon("squirtle", obtainedPokemonMsg)
     2) Pesquisar no MDN.
 */
 
+const array = [99,2,3,4]
+const map = (array) => {for (let i = 0; i < array.length; i++) console.log(array[i] * 2)}
+
+map(array)
 /*
   03
 
