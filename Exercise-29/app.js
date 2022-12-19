@@ -148,7 +148,7 @@ map(array)
 
 
 /* 03
-  - Descomente o console.log abaixo e faça o this do método referenciar o 
+    - Descomente o console.log abaixo e faça o this do método referenciar o 
     objeto person.
 */
 const person = {
@@ -156,64 +156,89 @@ const person = {
     getName: () => person.name
 }
 console.log(person.getName())
-  
-  /*
-    04
-  
+
+
+
+
+
+/* 04
     - Descomente a 2ª const abaixo e salve este arquivo;
     - Um erro será exibido no console;
     - Faça as duas const x coexistirem, sem modificar o nome de qualquer uma 
-      delas.
-  */
-  
-  const x = 'x'
-  // const x = 'y'
-  
-  /*
-    05
-  
+    delas.
+*/
+const x = 'x'
+const getX = () => {const x = 'y'; return x}
+console.log(x, getX())
+
+
+
+
+
+/* 05
     - O código abaixo está funcionando. Refatore-o da forma mais concisa que você 
-      conseguir.
-  */
-  
-  const getFullName = (user) => {
-    const firstName = user.firstName
-    const lastName = user.lastName
-  
-    return `${firstName} ${lastName}`
-  }
-  
-//   console.log(getFullName({ firstName: 'Afonso', lastName: 'Solano' }))
-  
-  /*
-    06
-  
+    conseguir.
+*/
+const getFullName = ({ firstName, lastName }) => `${firstName} ${lastName}`
+console.log(getFullName({ firstName: 'Afonso', lastName: 'Solano' }))
+
+
+
+
+
+/* 06
     - Crie uma função chamada 'convertToHex', que recebe o nome de uma cor por 
-      parâmetro. Exemplo: 'red';
+        parâmetro. Exemplo: 'red';
     - Escolha 5 cores que serão convertidas do nome da cor para o seu
-      equivalente hexadecimal (pode ser qualquer tom);
+        equivalente hexadecimal (pode ser qualquer tom);
     - Verifique se a cor passada por parâmetro é algum hexa escolhido. Se for,
-      retorne a frase 'O hexadecimal para a cor COR é HEXADECIMAL';
+        retorne a frase 'O hexadecimal para a cor COR é HEXADECIMAL';
     - Se a cor passada por parâmetro não estiver entre as selecionadas, mostre
-      a mensagem 'Não temos o equivalente hexadecimal para COR';
+        a mensagem 'Não temos o equivalente hexadecimal para COR';
     - Exiba o hexadecimal de 8 cores diferentes usando a função criada acima.
-  */
-  
-  
-  /*
-    07
-  
+*/
+const convertToHex = color => {
+    const colors = {
+        red: "#A31419",
+        green: "#10A337",
+        blue: "#4C91F0",
+        yellow: "#F0EA6F",
+        purple: "#8132A3",
+    }
+    return colors[color]
+        ? `O hexadecimal para a cor ${color} é ${colors[color]}`
+        : `Não temos o equivalente hexadecimal para ${color}`
+}
+const colors = [
+    "blue",
+    "black",
+    "red",
+    "green",
+    "pink",
+    "yellow",
+    "purple",
+    "brown"
+]
+
+const logColorMessage = color => {console.log(convertToHex(color))}
+colors.forEach(logColorMessage)
+
+
+
+
+
+/* 07
     - Através do array abaixo, gere um objeto com a frequência de idades das 
-      pessoas;
+        pessoas;
     - Ou seja, se o array contém 3 pessoas com 18 anos, o objeto gerado deve ter 
-      uma propriedade 18 com o valor 3, se o array contém 2 pessoas com 19 anos,
-      o objeto gerado deve ter uma propriedade 19 com o valor 2 e assim por 
-      diante.
-    
+        uma propriedade 18 com o valor 3, se o array contém 2 pessoas com 19 anos,
+        o objeto gerado deve ter uma propriedade 19 com o valor 2 e assim por 
+        diante.
+
     Resultado desejado: { 18: 3, 19: 2, 20: 1 }
-  
+
     Dica: pesquise por Computed Property Names.
-  */
+*/
   
   const people = [
     { id: 5 , name: 'Angelica', age: 18, federativeUnit: 'Pernambuco' },
