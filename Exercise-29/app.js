@@ -124,7 +124,6 @@ getPokemon("squirtle", obtainedPokemonMsg)
 
 
 /* 02
-
   - Há algumas etapas, implementamos o método some, do zero;
   - Neste exercício, seu desafio será criar o método map, do zero;
   - Implemente uma função "map" que possui a mesma funcionalidade do método  
@@ -142,21 +141,21 @@ getPokemon("squirtle", obtainedPokemonMsg)
 
 const array = [99,2,3,4]
 const map = (array) => {for (let i = 0; i < array.length; i++) console.log(array[i] * 2)}
-
 map(array)
-/*
-  03
 
+
+
+
+
+/* 03
   - Descomente o console.log abaixo e faça o this do método referenciar o 
     objeto person.
 */
-
 const person = {
     name: 'Roger',
-    getName: () => this.name
-  }
-  
-  // console.log(person.getName())
+    getName: () => person.name
+}
+console.log(person.getName())
   
   /*
     04
