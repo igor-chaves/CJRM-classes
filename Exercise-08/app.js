@@ -52,11 +52,12 @@ for (let i = 1; i < 8; i++) {
 */
 const millennialWords = ['lol', 'yolo', 'troll', 'stalkear', 'selfie', 'influencer', 'crush', 'fitness', 'hater', 'bae', 'random', 'kawaii', 'outfit', 'mood', 'fail']
 
-function transformToUpperCase(array) {
+const transformToUpperCase = function(array = []) {
     let newArray = []
     array.forEach(item => newArray.push(item.toUpperCase()))
     return newArray
 }
+
 console.log(transformToUpperCase(millennialWords))
 
 
@@ -73,13 +74,14 @@ console.log(transformToUpperCase(millennialWords))
 */
 const randomNumbers = [-2, 93, 34, -1, 1, 93, 11, -7, 47, -3]
 
-function isPositive(num) {return num > 0}
-
 let pos = 0
 let neg = 0
 
+function isPositive(num) {return num > 0}
+
 for (let i = 0; i < randomNumbers.length; i++) {
-    isPositive(randomNumbers[i]) ? pos++ : neg++
+    const isPositiveNumber = isPositive(randomNumbers[i])
+    isPositiveNumber ? pos++ : neg++
 }
 console.log(`O array "randomNumbers" possui ${randomNumbers.length} números, sendo ${pos} positivos e ${neg} negativos.`)
 
@@ -94,15 +96,17 @@ console.log(`O array "randomNumbers" possui ${randomNumbers.length} números, se
   - Exiba o novo array no console, sem inserir um console.log() dentro da  
     função.
 */
-function getOddNumbers(array) {
+function getOddNumbers(array = []) {
     const odd = []
-
+    
     for (let i = 0; i < array.length; i++) {
-        if (array[i] % 2 === 1) odd.push(array[i])
+        const number = array[i]
+        const isOddNumber = number % 2 === 1
+
+        if (isOddNumber) odd.push(number)
     } return odd
 }
 console.log(getOddNumbers([83, 52, 31, 73, 98, 37, 61, 56, 12, 24, 35, 3, 34, 80, 42]))
-
 
 
 
