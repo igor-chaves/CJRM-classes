@@ -139,13 +139,16 @@ numbers.forEach((num, index, array) => console.log(`O ${index}º item do array $
   - Após a conversão, verifique se a cópia do array lettersCopy realmente foi  
     criada.
 */
-
 const letters = ['v', 'e', 'p']
 let lettersCopy = []
 
-for (let i = 0; i < letters.length; i++) {
-  lettersCopy.push(letters[i])
-}
+letters.forEach(item => lettersCopy.push(item))
+console.log(letters)
+console.log(lettersCopy)
+
+
+
+
 
 /*
   13
@@ -164,9 +167,7 @@ for (let i = 0; i < letters.length; i++) {
     <section data-js="section"></section>
   </article>
 */
-
 const section = document.querySelector('[data-js="section"]')
-
 const review = [
   'Eu sempre adorei o filme e quando descobri que tinha o livro também fiquei doido. Demorei um pouco mas acabei comprando e finalmente li \o/.',
   'O primeiro filme foi baseado nesse livro, porém o livro (como sempre) é muito mais completo, com mais personagens, mais acontecimentos e até mesmo mais dinossauros. Na verdade nesse livro tem coisas do segundo e terceiro filme também, eles mudaram bastante nos filmes, acho que pra ficar mais comercial, e se o filme é bom, o livro é 100 vezes melhor.',
@@ -175,8 +176,14 @@ const review = [
 ]
 
 let paragraphs = ''
+const createParagraphs = item => paragraphs+= `<p>${item}</p>`
 
+review.forEach(createParagraphs)
 section.innerHTML = paragraphs
+
+
+
+
 
 /*
   14
