@@ -176,7 +176,7 @@ const review = [
 
 let paragraphs = ''
 
-// section.innerHTML = paragraphs
+section.innerHTML = paragraphs
 
 /*
   14
