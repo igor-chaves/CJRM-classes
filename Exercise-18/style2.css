@@ -1,0 +1,23 @@
+.container {
+    padding-top: 0.5rem;
+}
+
+.username-invalid {
+    margin-bottom: 2.5rem;
+    color: darkorange;
+}
+
+.username-valid {
+    margin-bottom: 2.5rem;
+    color: green;
+}
+
+.submit-invalid {
+    margin-bottom: 2.5rem;
+    color: red;
+}
+
+.submit-valid {
+    margin-bottom: 2.5rem;
+    color: green;
+}
