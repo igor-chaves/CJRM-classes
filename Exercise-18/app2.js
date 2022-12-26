@@ -3,27 +3,30 @@ const input = document.querySelector("#username")
 const button = document.querySelector("#clear")
 const pSubmit = document.createElement("p")
 const pInput = document.createElement("p")
-
 const regex = /^[a-zA-Z0-9]{4,8}$/
 
-form.addEventListener("submit", e => {
-    e.preventDefault()
+const verifyInput = () => {
+    const usernameValue = input.value
+    const verifyUsername = regex.test(usernameValue)
+}
 
+const showUsernameMessage = (element1, element2, text, className) => {
+    element1.textContent = text
+    element1.setAttribute("class", className)
+    element2.insertAdjacentElement("afterend", element1)
+}
+
+const submitForm = e => {
+    e.preventDefault()
+    // verifyInput()
     const usernameValue = input.value
     const verifyUsername = regex.test(usernameValue)
 
-    if (verifyUsername) {
-        pSubmit.textContent = "User registered"
-        pSubmit.setAttribute("class", "submit-valid")
-        button.insertAdjacentElement("afterend", pSubmit)
-        return
-    }
-    pSubmit.textContent = "Please insert a valid username"
-    pSubmit.setAttribute("class", "submit-invalid")
-    button.insertAdjacentElement("afterend", pSubmit)
-})
+    if (verifyUsername) {showUsernameMessage(pSubmit, button, "User registered", "submit-valid"); return}
+    showUsernameMessage(pSubmit, button, "Please insert a valid username", "submit-invalid")
+}
 
-input.addEventListener("input", e => {
+const verifyUsername = e => {
     e.preventDefault()
 
     const usernameValue = input.value
@@ -31,21 +34,18 @@ input.addEventListener("input", e => {
 
     pSubmit.remove()
 
-    if (verifyUsername) {
-        pInput.textContent = "Valid username"
-        pInput.setAttribute("class", "username-valid")
-        input.insertAdjacentElement("afterend", pInput)
-        return
-    }
-    pInput.textContent = "Invalid username"
-    pInput.setAttribute("class", "username-invalid")
-    input.insertAdjacentElement("afterend", pInput)
-})
+    if (verifyUsername) {showUsernameMessage(pInput, input, "Valid username", "username-valid"); return}
+    showUsernameMessage(pInput, input, "Invalid username", "username-invalid")
+}
 
-button.addEventListener("click", e => {
+const clearMessagesAndInput = e => {
     e.preventDefault()
     
     input.value = ""
     pInput.remove()
     pSubmit.remove()
-})
+}
+
+form.addEventListener("submit", submitForm)
+input.addEventListener("input", verifyUsername)
+button.addEventListener("click", clearMessagesAndInput)
