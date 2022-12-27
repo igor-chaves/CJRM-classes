@@ -111,3 +111,37 @@ let booksBox = {
   spaces: 5,
   booksIn: 0
 }
+
+booksBox.addBooks = books => {
+    let { spaces, booksIn } = booksBox
+    booksIn += books
+    console.log(booksIn)
+    // let exceeded = books - spaces
+    
+    // console.log(booksBox, exceeded)
+
+    // if (box < 6 && exceeded <= 0) {
+    //     box += books
+    //     // booksBox.spaces -= box
+    //     // console.log("Add:", books)
+    //     // console.log("Space:", booksBox.spaces))
+    //     return `Já há ${box} livros na caixa.`
+    // }
+    // return `ops excedeu em: ${exceeded}`
+}
+
+// console.log(booksBox.addBooks(2))
+booksBox.addBooks(2)
+
+
+
+const people = {
+    name: "igor"
+}
+
+let { name } = people
+name = "pedro"
+
+console.log(name) // resultado joao
+console.log(people) // resultado {name: 'igor'}
+
