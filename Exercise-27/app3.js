@@ -21,9 +21,9 @@ console.log('Linha 8')
     "logGreeting" ser exibida no console.
 */
 
-function logGreeting (name) {console.log(`olá, ${name}`)}
-function x (callback) {callback("igor")}
-x(logGreeting)
+// function logGreeting (name) {console.log(`olá, ${name}`)}
+// function x (callback) {callback("igor")}
+// x(logGreeting)
 
 
 
@@ -142,6 +142,5 @@ const people = {
 let { name } = people
 name = "pedro"
 
-console.log(name) // resultado joao
+console.log(name) // resultado pedro
 console.log(people) // resultado {name: 'igor'}
-
