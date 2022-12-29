@@ -139,17 +139,17 @@ console.log(caixa.addLivros(3))
 
 
 // meu jeito
-// booksBox.addBooks = books => {
-//   booksBox.booksIn += books
-//   const { spaces, booksIn } = booksBox
+booksBox.addBooks = books => {
+  booksBox.booksIn += books
+  const { spaces, booksIn } = booksBox
 
-//   const singularPluralInsideBox = booksIn > 1 ? "livros" : "livro"
-//   const singularPluralOutsideBox = booksIn >= 7 ? "livros" : "livro"
+  const singularPluralInsideBox = booksIn > 1 ? "livros" : "livro"
+  const singularPluralOutsideBox = booksIn >= 7 ? "livros" : "livro"
   
-//   if (booksIn < spaces) return `Há ${booksIn} ${singularPluralInsideBox} na caixa`
-//   if (booksIn === spaces) return `A caixa está cheia`
-//   return `Excedeu em ${booksIn - spaces} ${singularPluralOutsideBox}`
-// }
+  if (booksIn < spaces) return `Há ${booksIn} ${singularPluralInsideBox} na caixa`
+  if (booksIn === spaces) return `A caixa está cheia`
+  return `Excedeu em ${booksIn - spaces} ${singularPluralOutsideBox}`
+}
 
 
-// console.log(booksBox.addBooks(6))
+console.log(booksBox.addBooks(6))
