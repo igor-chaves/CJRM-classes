@@ -49,7 +49,7 @@ let person = {
     surnames: "Chaves Donegá",
     gender: "male",
     age: 33,
-    height: 1.73,
+    height: 1.74,
     weight: 60,
     isWalking: false,
     walkedDistance: 0
@@ -191,6 +191,7 @@ const getBook = bookName => {
     }
 
     // ternario com 2 argumentos apenas.
+    // se TRUE retorna o próprio "book[bookName]" se FALSE retorna o próprio "books"
     // se TRUE executa o primeiro, se FALSE executa o segundo
     return books[bookName] || books
 }
