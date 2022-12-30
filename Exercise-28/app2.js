@@ -18,10 +18,10 @@ const request = new XMLHttpRequest()
 request.open("GET", "https://pokeapi.co/api/v2/pokemon/pikachu")
 request.send()
 
-// request.addEventListener("readystatechange", () => {
-//     if (request.readyState === 4 && request.status === 200) {console.log(request.responseText); return}
-//     if (request.readyState === 4) console.log('Não foi possível obter os dados do pokémon')
-// })
+request.addEventListener("readystatechange", () => {
+    if (request.readyState === 4 && request.status === 200) {console.log(request.responseText); return}
+    if (request.readyState === 4) console.log('Não foi possível obter os dados do pokémon')
+})
 
 
 
@@ -43,9 +43,18 @@ request.send()
 const me = {
     name: "igor",
     age: 33,
-    metersWalked: 0
+    metersWalked: 0,
+    add: function() {console.log("add: function() {}:", this.name)},
+    add2: () => {console.log("add: () => {}:", me.name)},
+    add3() {console.log("add() {}:", this.name)},
 }
+me.add()
+me.add2()
+me.add3()
 
+me.addAge = () => {me.age += 1}
+me.addAge()
+console.log(me)
 /* 03
   - Logo abaixo, adicione ao objeto um método que adiciona 1 ao valor da 
     propriedade que armazena a idade;
@@ -96,7 +105,7 @@ const truthyOrFalsy = value => {
     const falsy = [false, null, undefined, NaN, 0, -0, 0n, ""]
     return falsy.includes(value) ? "falsy" : "truthy"
 }
-console.log(truthyOrFalsy(0n))
+// console.log(truthyOrFalsy(0n))
 
 
 /* 07
@@ -117,4 +126,4 @@ console.log(truthyOrFalsy(0n))
 */
 
 const func = (pagesNum, writtenBy, publishedBy) => {return {pagesNum, writtenBy, publishedBy}}
-console.log(func(19, "haha", "hhi"))
+// console.log(func(19, "haha", "hhi"))
