@@ -197,15 +197,3 @@ const getBook = bookName => {
 }
 
 console.log(getBook("Pinoquio"))
-
-
-
-
-const showName = name => setTimeout(() => {console.log(name)}, 1000)
-
-
-showName("igor")
-setTimeout(() => {console.log("1")}, 2000)
-setTimeout(() => {console.log("2")}, 2000)
-setTimeout(() => {console.log("3")}, 2000)
-setTimeout(() => {console.log("4")}, 2000)
