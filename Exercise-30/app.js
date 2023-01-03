@@ -47,14 +47,30 @@ const getUsers = url => new Promise((resolve, reject) => {
     mensagem: "Resultado da operação: NUMERO_1 OPERADOR NUMERO_2 = RESULTADO."
     - Se o operador não for válido, retorne a mensagem "Operação inválida."
 */
+const getOperationMessage = (n1, operator, n2, operation) =>
+    `Resultado da operação: ${n1} ${operator} ${n2} = ${operation}`
 
-const calculator = (operation, callback) => {
-    return callback(number1, number2)
+const calculator = operator => (n1, n2) => {
+    const operations = {
+        "+": getOperationMessage(n1, operator, n2, n1 + n2),
+        "-": getOperationMessage(n1, operator, n2, n1 - n2),
+        "/": getOperationMessage(n1, operator, n2, n1 / n2),
+        "*": getOperationMessage(n1, operator, n2, n1 * n2),
+        "%": getOperationMessage(n1, operator, n2, n1 % n2),
+    }
+    return operations[operator] || "Operação inválida"
 }
+const sum = calculator("+")
+const subtraction = calculator("-")
+const division = calculator("/")
+const multiplication = calculator("*")
+const module = calculator("%")
 
-const fullOperation = (number1, number2) => {
-    return `Resultado da operação: NUMERO_1 OPERADOR NUMERO_2 = RESULTADO.`
-}
+console.log(sum(5, 2))
+console.log(subtraction(5, 2))
+console.log(division(5, 2))
+console.log(multiplication(5, 2))
+console.log(module(5, 2))
 
 
 
@@ -77,7 +93,7 @@ const centroOeste = ["Goiás", "Mato Grosso", "Mato Grosso do Sul", "Distrito Fe
 const sudeste = ["Espírito Santo", "Minas Gerais", "Rio de Janeiro", "São Paulo"]
 const sul = ["Paraná", "Rio Grande do Sul", "Santa Catarina"]
 
-const brasil = sudeste.concat(sul)
+let brasil = sudeste.concat(sul)
 console.log(brasil)
 norte.forEach(state => brasil.unshift(state))
 console.log(brasil)
@@ -109,15 +125,17 @@ console.log(newSul)
 */
 const newSudeste = brasil.splice(6, 4)
 console.log(newSudeste)
-nordeste.forEach(state => brasil.push(state))
+brasil = brasil.concat(nordeste)
 console.log(brasil)
-const newBrasil = brasil.map((state, index) => {return { id: index, estado: state }})
+const newBrasil = brasil.map((state, index) => ({ id: index, estado: state }))
 console.log(newBrasil)
 
-const msgYes = "Sim, todos os estados tem mais de 7 letras."
-const msgNo = "Nem todos os estados tem mais de 7 letras."
+
 const moreThan7letters = brasil.every(state => state.length > 7)
-console.log(moreThan7letters ? msgYes : msgNo)
+const message = moreThan7letters
+    ? "Sim, todos os estados tem mais de 7 letras."
+    : "Nem todos os estados tem mais de 7 letras."
+console.log(message)
 
 
 
@@ -138,11 +156,10 @@ console.log(moreThan7letters ? msgYes : msgNo)
 const checkCeara = brasil.includes("Ceará")
 console.log(checkCeara ? "Ceará está incluído." : "Ceará não foi incluído =/")
 
-const newBrasil2 = newBrasil.map((state, index) => {
-    return {id: index+1, estado: `${state.estado} pertence ao Brasil`}
+const newBrasil2 = newBrasil.map(({ id, estado}) => {
+    return {id: id + 1, estado: `${estado} pertence ao Brasil`}
 })
 console.log(newBrasil2)
 
-
-
-console.log("-->", newBrasil2.filter(state => state.id[length] > 1))
+const newBrasilFiltered = newBrasil2.filter(({ id }) => id % 2 === 0)
+console.log(newBrasilFiltered)
