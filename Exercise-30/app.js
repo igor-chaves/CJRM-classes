@@ -26,9 +26,14 @@ const getUsers = url => new Promise((resolve, reject) => {
     request.send()
 })
 
-getUsers("https://jsonplaceholder.typicode.com/users")
-    .then(console.log)
-    .catch(console.log)
+// getUsers("https://jsonplaceholder.typicode.com/users")
+//     .then(console.log)
+//     .catch(console.log)
+
+
+
+
+
 /*
   02
 
@@ -51,6 +56,10 @@ const fullOperation = (number1, number2) => {
     return `Resultado da operação: NUMERO_1 OPERADOR NUMERO_2 = RESULTADO.`
 }
 
+
+
+
+
 /* 03
     - Crie 2 arrays, `sul` e `sudeste`, que serão as regiões do Brasil. Cada 
       array deve conter os estados dessa região;
@@ -60,27 +69,29 @@ const fullOperation = (number1, number2) => {
       console. Pesquise pelo método "unshift" no MDN;
     - Remova o primeiro estado do array `brasil` e mostre-o no console;
     - Crie um novo array chamado `newSul`, que recebe somente os estados do sul,
-pegando do array `brasil`. Não remova esses itens de `brasil`.
+    pegando do array `brasil`. Não remova esses itens de `brasil`.
 */
-const sul = ["PR", "SC", "RS"]
-const sudeste = ["ES", "MG", "SP", "RJ"]
+const norte = ["Acre", "Amazonas", "Amapá", "Pará", "Rondônia", "Roraima", "Tocantins"]
+const nordeste = ["Alagoas", "Bahia", "Ceará", "Maranhão", "Piauí", "Pernambuco", "Paraíba", "Rio Grande do Norte", "Sergipe"]
+const centroOeste = ["Goiás", "Mato Grosso", "Mato Grosso do Sul", "Distrito Federal"]
+const sudeste = ["Espírito Santo", "Minas Gerais", "Rio de Janeiro", "São Paulo"]
+const sul = ["Paraná", "Rio Grande do Sul", "Santa Catarina"]
 
-const brasil = sul.concat(sudeste)
+const brasil = sudeste.concat(sul)
 console.log(brasil)
-brasil.unshift("RR", "PA", "AM")
+norte.forEach(state => brasil.unshift(state))
 console.log(brasil)
 brasil.shift()
 console.log(brasil)
-const newSul = brasil.slice(2,5)
+
+const newSul = brasil.slice(-3)
 console.log(newSul)
 
 
 
 
 
-/*
-  04
-
+/* 04
   - Crie um novo array chamado `nordeste`, que tenha os estados do nordeste;
   - Remova de `brasil` os estados do `sudeste`, colocando-os em uma constante
     chamada `newSudeste`. Pesquise pelo método "splice";
@@ -96,19 +107,17 @@ console.log(newSul)
     console: "Nem todos os estados tem mais de 7 letras.". Pesquise pelo método 
     every.
 */
-const nordeste = ["PI", "AL", "SE", "PE", "PR", "RN", "CE", "MA"]
-const newSudeste = brasil.splice(-3,)
+const newSudeste = brasil.splice(6, 4)
 console.log(newSudeste)
-
 nordeste.forEach(state => brasil.push(state))
 console.log(brasil)
-
-const newBrasil = []
-for (let i = 0; i < brasil.length; i++) newBrasil.push({ id:i, state: brasil[i] })
+const newBrasil = brasil.map((state, index) => {return { id: index, estado: state }})
 console.log(newBrasil)
 
-const check = brasil.every(x => x.length === 2)
-console.log(check ? "yes, all states has 2 letters" : "no, some states has more or less than 2 letters")
+const msgYes = "Sim, todos os estados tem mais de 7 letras."
+const msgNo = "Nem todos os estados tem mais de 7 letras."
+const moreThan7letters = brasil.every(state => state.length > 7)
+console.log(moreThan7letters ? msgYes : msgNo)
 
 
 
@@ -122,11 +131,18 @@ console.log(check ? "yes, all states has 2 letters" : "no, some states has more 
     objeto desse array, e adicione a frase abaixo na propriedade `estado`:
     - "ESTADO pertence ao Brasil.";
   - Atribua o novo array a uma constante;
+  
   - Filtre o array criado acima, retornando somente os estados que tiverem ID 
     par. Atribua este novo array à uma constante.
 */
-const CEincluded = brasil.includes("CE")
-console.log(CEincluded ? "yes, included" : "no, not included :/")
+const checkCeara = brasil.includes("Ceará")
+console.log(checkCeara ? "Ceará está incluído." : "Ceará não foi incluído =/")
 
-const newBrasil2 = newBrasil.map(state => {id: state.id += 1; a: state.state += ` belongs to Brazil`})
+const newBrasil2 = newBrasil.map((state, index) => {
+    return {id: index+1, estado: `${state.estado} pertence ao Brasil`}
+})
 console.log(newBrasil2)
+
+
+
+console.log("-->", newBrasil2.filter(state => state.id[length] > 1))
