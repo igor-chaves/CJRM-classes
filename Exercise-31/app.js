@@ -1,41 +1,61 @@
+// HTTP REQUEST
+// const request = new XMLHttpRequest()
 
+// request.addEventListener("readstatechange", () => {
+//     const requestOk = request.readyState === 4 && request.status === 200
+//     const requestNotOk = request.readyState === 4
 
-// const getUsers = async () => {
-//     const response = await fetch("https://jsonplaceholder.typicode.com/users")
-//     return await response.json()
-// }
-// const logUsers = async () => {
-//     const users = await getUsers()
-//     console.log(users)
-// }
+//     if(requestOk) {console.log(request.responseText); return}
+//     if(requestNotOk) {console.log("Erro!!!")}
+// })
 
-// console.log(1)
-// console.log(2)
-// logUsers()
-// console.log(3)
-// console.log(4)
+// request.open("get", "https://jsonplaceholder.typicode.com/todos")
+// request.send()
 
 
 
+// PROMISE
+const myPromise = () => new Promise((resolve, reject) => {
+    const request = new XMLHttpRequest()
 
-fetch("https://jsonplaceholder.typicode.com/users")
-    .then(response => {
-        console.log("RESPONSE:", response)
-        return response.json()
+    request.addEventListener("readystatechange", () => {
+        const requestOk = request.readyState === 4 && request.status === 200
+        const requestNotOk = request.readyState === 4
+    
+        if(requestOk) resolve(request.responseText)
+        if(requestNotOk) reject("Erro!!!")
     })
-    .then(users => console.log(users))
-    .catch(error => console.log("ERROR:", error)) // só executa quando dá erro de conexão na rede
+    
+    request.open("get", "https://jsonplaceholder.typicode.com/todos")
+    request.send()
+})
 
-    // fetch => buscar
+// myPromise()
+//     .then(value => console.log(value))
+//     .catch(value => console.log(value))
 
 
+/* 01
+    - Usando promises, faça um request para este endpoint: https://jsonplaceholder.typicode.com/users
+    - Se o request estiver ok, exiba os objetos no console;
+    - Se o request não estiver ok, exiba no console "Não foi possível obter os dados dos usuários."
+*/
 
-// promise é um objeto com o resultado (+/-) de uma operacao assincrona
-// deve receber 2 argumentos (resolve, reject). O resolve tem um return implicito
-// tem 3 estados: pending, fulfilled, rejected
-// pending -> a operação ainda não foi concluída
-// fulfilledo -> operação concluída com sucesso
-// rejected -> a operação falhou
+const getUsers = url => new Promise((resolve, reject) => {
+    const request = new XMLHttpRequest()
 
-// promises possuem o método .then() que acessa a resposta de sucesso da promise
-// promises possuem o método .catch() que acessa a resposta de falha da promise
+    request.addEventListener("readystatechange", () => {
+        const reqOk = request.readyState === 4 && request.status === 200
+        const reqNotOk = request.readyState === 4
+
+        if(reqOk) resolve(JSON.parse(request.responseText))
+        if(reqNotOk) reject("Não foi possível obter os dados dos usuários.")
+    })
+
+    request.open("get", url)
+    request.send()
+})
+
+getUsers("https://jsonplaceholder.typicode.com/users")
+    .then(console.log)
+    .catch(console.log)
