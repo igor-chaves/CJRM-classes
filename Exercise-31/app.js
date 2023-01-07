@@ -113,13 +113,18 @@ console.log(Object.values(obj))
 
 const scores = [100, 90, 85, 100, 60, 85, 100, 90, 55, 75, 60]
 
-const findItem = (array, item) => {
-    let count = 0
+// minha resolução
+// const findItem = (array, item) => {
+//     let count = 0
+//     array.forEach(num => {if(num === item ) count++})
+//     console.log(count)
+// }
+// findItem(scores, 100)
 
-    array.forEach(num => {if(num === item ) count++})
-    console.log(count)
-}
-findItem(scores, 100)
+// resolução do roger
+const getOcurrences = (array, value) => 
+    array.reduce((acc, number) => value === number ? acc + 1 : acc, 0)
+console.log(getOcurrences(scores, 100))
 
 
 
@@ -146,3 +151,22 @@ findItem(scores, 100)
     Dica: lembre-se que o método filter inclui o item em questão no novo array 
     que está sendo gerado **apenas** se a função retorna um valor truthy.
 */
+
+const filter = (array, func) => {
+    let newArray = []
+
+    const filterItem = (item, index) => {
+        const itemAdded = func(item, index, array)
+
+        if (itemAdded) newArray.push(item)
+    }
+
+    array.forEach(filterItem)
+    return newArray
+}
+
+console.log(filter([1, 2, 3], item => item))
+console.log(filter([0, 1, 2], item => item))
+console.log(filter([1, 2, 3], item => item < 2))
+console.log(filter([1, 2, 3, 5], (item, index) => item === index + 1))
+console.log(filter([1, 2, 3, 2, 1, 5], (item, index, array) => index === array.indexOf(item)))
