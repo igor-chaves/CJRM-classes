@@ -17,6 +17,8 @@ logGithubUser("igor-chaves")
 
 
 
+
+
 /* 02
     - A partir do array numbers (abaixo), crie um novo array que contém somente 
       os números do array numbers que são divisíveis por 2 ou 3;
@@ -26,7 +28,6 @@ const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 const getDivisibleBy2Or3 = array => array
     .filter(num => num % 2 === 0 || num % 3 === 0)
 console.log(getDivisibleBy2Or3(numbers))
-
 
 
 
