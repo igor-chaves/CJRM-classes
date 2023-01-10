@@ -3,6 +3,20 @@ const div = document.querySelector("div")
 const APIKey = "EbQJ4Iy764uvo9YMBCjX8bPwxlyAsmoj"
 
 
+const fetchGif = async input => {
+    const fetchURL = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${APIKey}&limit=1&q=${input}`)
+    const responseURL = await fetchURL.json()
+
+    getURL(responseURL)
+}
+
+const getURL = responseURL => {
+    const url = responseURL.data[0].images.downsized.url
+    const title = responseURL.data[0].title
+
+    generateGifImage(url, title)
+}
+
 const generateGifImage = (url, title) => {
     const img = document.createElement("img")
 
@@ -11,24 +25,10 @@ const generateGifImage = (url, title) => {
     div.insertAdjacentElement("afterbegin", img)
 }
 
-const fetchGif = async (input) => {
-    const fetchURL = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${APIKey}&limit=1&q=${input}`)
-    const responseURL = await fetchURL.json()
-
-    const url = responseURL.data[0].images.downsized.url
-    const title = responseURL.data[0].title
-    generateGifImage(url, title)
-}
-
-const getURL = input => {
-    fetchGif(input)
-}
-
-
 form.addEventListener("submit", event => {
     event.preventDefault()
     
     const inputValue = event.target.search.value
-    getURL(inputValue)
+    fetchGif(inputValue)
     event.target.reset()
 })
