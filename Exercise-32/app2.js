@@ -1,6 +1,6 @@
 const form = document.querySelector("form")
 const div = document.querySelector("div")
-
+const APIKey = "EbQJ4Iy764uvo9YMBCjX8bPwxlyAsmoj"
 
 
 const generateGifImage = (url, title) => {
@@ -12,7 +12,6 @@ const generateGifImage = (url, title) => {
 }
 
 const fetchGif = async (input) => {
-    const APIKey = "EbQJ4Iy764uvo9YMBCjX8bPwxlyAsmoj"
     const fetchURL = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${APIKey}&limit=1&q=${input}`)
     const responseURL = await fetchURL.json()
 
