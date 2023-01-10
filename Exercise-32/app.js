@@ -35,7 +35,7 @@ const fetchGIF = async inputValue => {
         if (!response.ok) {
             throw new Error("Não foi possível obter os dados!")
         }
-        return r    
+        return response    
     } catch (error) {
         alert(`Erro: ${error.message}`)
     }
