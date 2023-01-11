@@ -29,6 +29,8 @@ form.addEventListener("submit", event => {
     event.preventDefault()
     
     const inputValue = event.target.search.value
+
     fetchGif(inputValue)
+    
     event.target.reset()
 })
